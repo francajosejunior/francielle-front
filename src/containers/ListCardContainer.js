@@ -7,14 +7,12 @@ import React, {
 } from 'react'
 import ListCard from '../components/ListCard'
 import api from '../services/api'
-import { ItineraryContext } from '../util/context'
+import { ItineraryContext, CardListContext } from '../util/context'
+import useRemoveCardFromItinerary from '../hooks/useRemoveCardFromItinerary'
 
-const ListCardContainer = ({ history }) => {
-  const [list, setList] = useState([])
+const ListCardContainer = () => {
   const [itinerary, setItinerary] = useContext(ItineraryContext)
-  useEffect(() => {
-    api.get('/card').then(result => setList(result))
-  }, [])
+  const [list] = useContext(CardListContext)
 
   const addCardToItinerary = useCallback(
     card => () => {
@@ -25,13 +23,9 @@ const ListCardContainer = ({ history }) => {
     [itinerary]
   )
 
-  const removeCardToItinerary = useCallback(
-    card => () => {
-      api
-        .delete(`/itinerary/${itinerary._id}/${card._id}`)
-        .then(result => setItinerary(result))
-    },
-    [itinerary]
+  const removeCardFromItinerary = useRemoveCardFromItinerary(
+    itinerary,
+    setItinerary
   )
 
   const memoList = useMemo(
@@ -45,16 +39,11 @@ const ListCardContainer = ({ history }) => {
     [list, itinerary]
   )
 
-  const goToItinerary = useCallback(() => {
-    history.push('/itinerary')
-  }, [])
-
   return (
     <ListCard
       list={memoList}
       addCardToItinerary={addCardToItinerary}
-      removeCardToItinerary={removeCardToItinerary}
-      goToItinerary={goToItinerary}
+      removeCardFromItinerary={removeCardFromItinerary}
     />
   )
 }

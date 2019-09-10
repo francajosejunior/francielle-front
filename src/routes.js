@@ -1,14 +1,17 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 
-import ListCardContainer from './containers/ListCardContainer'
-import ItineraryContainer from './containers/ItineraryContainer'
+import ListCard from './pages/ListCard'
+import Itinerary from './pages/Itinerary'
+import CardDetails from './pages/CardDetails'
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={ListCardContainer} />
-      <Route path="/itinerary" component={ItineraryContainer} />
+      <Route exact path="/" component={Itinerary} />
+      <Route exact path="/card" component={ListCard} />
+      <Route exact path="/card/:_id" component={CardDetails} />
+      <Route exact path="/itinerary" component={Itinerary} />
     </Switch>
   )
 }
