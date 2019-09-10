@@ -6,6 +6,7 @@ import { ItineraryContext } from '../util/context'
 const CardDetailsContainer = ({ cardId }) => {
   const card = useFindCardById(cardId)
   const [itinerary, setItinerary] = useContext(ItineraryContext)
+
   return <CardDetails card={card} itinerary={itinerary} />
 }
 
