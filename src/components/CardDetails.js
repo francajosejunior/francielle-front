@@ -4,7 +4,7 @@ import { Formik } from 'formik'
 import CardDetailsContainer from '../containers/CardDetailsContainer'
 import { TextField, Grid, Button } from '@material-ui/core'
 
-const CardDetails = ({ card, itinerary }) => {
+const CardDetails = ({ card, itinerary, save, remove, getCurrentPosition }) => {
   return (
     <Formik
       enableReinitialize
@@ -81,20 +81,35 @@ const CardDetails = ({ card, itinerary }) => {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button fullWidth variant="contained" color="secondary">
+            <Button
+              fullWidth
+              variant="contained"
+              color="secondary"
+              onClick={getCurrentPosition(values)}
+            >
               Atualizar coordenadas aqui
             </Button>
           </Grid>
           {dirty && (
             <Grid item xs={12}>
-              <Button fullWidth variant="contained" color="primary">
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={save(values)}
+              >
                 Salvar
               </Button>
             </Grid>
           )}
           {itinerary && (
             <Grid item xs={12}>
-              <Button fullWidth variant="contained" color="primary">
+              <Button
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={remove(values)}
+              >
                 Remover
               </Button>
             </Grid>
