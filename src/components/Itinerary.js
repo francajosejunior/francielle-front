@@ -3,10 +3,10 @@ import React from 'react'
 import ButtonRemoveCardFromItinerary from './ButtonRemoveCardFromItinerary'
 import CardItem from './CardItem'
 
-const Itinerary = ({ itinerary, removeCardFromItinerary, goToCardDetail }) => {
+const Itinerary = ({ cards, removeCardFromItinerary, goToCardDetail }) => {
   return (
     <>
-      {itinerary.cards?.map(card => (
+      {cards?.map(card => (
         <CardItem
           onClick={goToCardDetail(card._id)}
           key={card._id}

@@ -27,14 +27,6 @@ export default callback => {
     [setList, list]
   )
 
-  const updateItinerary = useCallback(
-    result => {
-      debugger
-      api.post(`/itinerary/${itinerary._id}`, result).then(x => setItinerary(x))
-    },
-    [itinerary]
-  )
-
   return useCallback(
     card => () => {
       // async save
@@ -42,7 +34,6 @@ export default callback => {
         try {
           const result = await api.post('card', card)
           updateCardList(result)
-          updateItinerary(result)
           callback()
         } catch (error) {
           errorNotification(error)

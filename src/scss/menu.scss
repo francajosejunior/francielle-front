@@ -1,0 +1,44 @@
+%transition {
+  transition: all ease-in-out 0.3s;
+}
+%transition2 {
+  transition: transform ease-in-out 0.3s;
+}
+
+.menu {
+  .menu-items {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      @extend %transition;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: -200px;
+    }
+    .menu-item-fixed {
+      margin-left: 0px;
+    }
+
+    .secondary {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      transform: scale(0) rotate(360deg);
+    }
+
+    &.open {
+      button {
+        margin-left: 0px;
+      }
+      .primary {
+        transform: scale(0) rotate(360deg);
+        rotate: 360deg;
+      }
+      .secondary {
+        transform: scale(1) rotate(0deg);
+        rotate: 0deg;
+      }
+    }
+  }
+}

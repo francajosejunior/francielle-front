@@ -9,7 +9,7 @@ const ListCard = ({ history }) => {
     <>
       <Header title="Cartões" />
       <ListCardContainer />
-      <div className="fixed-botton-right">
+      {/* <div className="fixed-botton-right">
         <Fab
           variant="extended"
           color="primary"
@@ -18,7 +18,7 @@ const ListCard = ({ history }) => {
           <CalendarToday />
           Itinerário
         </Fab>
-      </div>
+      </div> */}
     </>
   )
 }

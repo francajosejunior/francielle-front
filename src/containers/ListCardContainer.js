@@ -33,7 +33,7 @@ const ListCardContainer = () => {
       list.map(card => {
         return {
           ...card,
-          added: itinerary.cards?.some(x => x._id === card._id)
+          added: itinerary.cards?.some(x => x === card._id)
         }
       }),
     [list, itinerary]

@@ -15,8 +15,8 @@ import useItineraryContext from '../hooks/useItineraryContext'
 import useCardListContext from '../hooks/useCardListContext'
 
 const MainContainer = () => {
-  const [itinerary, setItinerary] = useItineraryContext()
   const [cardList, setCardList] = useCardListContext()
+  const [itinerary, setItinerary] = useItineraryContext(cardList)
 
   return (
     <HashRouter>
