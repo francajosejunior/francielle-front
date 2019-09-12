@@ -10,16 +10,15 @@ import {
 import './../scss/menu.scss'
 import history from '../util/history'
 
-const Menu = ({ open, toogleOpen }) => {
+const Menu = ({ open, toogleOpen, list }) => {
   return (
     <div className="fixed-botton-left menu">
       <div className={`menu-items ${open && 'open'}`}>
-        <Fab color="primary" onClick={() => history.push('/card')}>
-          <PictureInPicture />
-        </Fab>
-        <Fab color="primary" onClick={() => history.push('/itinerary')}>
-          <CalendarToday />
-        </Fab>
+        {list.map(({ route, onClick, icon: Icon }) => (
+          <Fab key={route} color="primary" onClick={onClick}>
+            <Icon />
+          </Fab>
+        ))}
 
         <Fab
           className="menu-item-fixed primary"

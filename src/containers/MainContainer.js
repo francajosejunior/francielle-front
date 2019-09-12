@@ -13,6 +13,7 @@ import { EMPTY_OBJECT } from '../util/constants'
 import api from '../services/api'
 import useItineraryContext from '../hooks/useItineraryContext'
 import useCardListContext from '../hooks/useCardListContext'
+import MenuContainer from './MenuContainer'
 
 const MainContainer = () => {
   const [cardList, setCardList] = useCardListContext()
@@ -23,6 +24,7 @@ const MainContainer = () => {
       <CardListContext.Provider value={[cardList, setCardList]}>
         <ItineraryContext.Provider value={[itinerary, setItinerary]}>
           <Routes />
+          <MenuContainer />
         </ItineraryContext.Provider>
       </CardListContext.Provider>
     </HashRouter>
