@@ -8,6 +8,7 @@ import {
   CalendarToday
 } from '@material-ui/icons'
 import './../scss/menu.scss'
+import history from '../util/history'
 
 const Menu = ({ open, toogleOpen }) => {
   return (
