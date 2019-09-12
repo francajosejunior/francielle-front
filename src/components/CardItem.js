@@ -23,6 +23,9 @@ const CardItem = ({ card, actions, onClick }) => {
           <Typography variant="body2" color="textSecondary" component="p">
             {`${card.city} - ${card.state}`}
           </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {`${card.latitude} , ${card.longitude}`}
+          </Typography>
         </CardContent>
       </CardActionArea>
       {actions}

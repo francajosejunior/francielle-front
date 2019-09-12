@@ -1,13 +1,17 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useState, useEffect } from 'react'
 import CardDetails from '../components/CardDetails'
 import useFindCardById from '../hooks/useFindCardById'
 import { ItineraryContext } from '../util/context'
 import useSaveCard from '../hooks/useSaveCard'
 import useRemoveCardFromItinerary from '../hooks/useRemoveCardFromItinerary'
 import useCurrentPosition from '../hooks/useCurrentPosition'
+import history from '../util/history'
+
+const onSaveCallback = () => history.push('/itinerary')
 
 const CardDetailsContainer = ({ cardId }) => {
   const card = useFindCardById(cardId)
+  const [coordsChanges, setCoordsChanges] = useState(-1)
   const [itinerary, setItinerary] = useContext(ItineraryContext)
 
   const itineraryCard = useMemo(
@@ -15,12 +19,15 @@ const CardDetailsContainer = ({ cardId }) => {
     [itinerary, card]
   )
 
-  const save = useSaveCard()
+  const save = useSaveCard(onSaveCallback)
   const remove = useRemoveCardFromItinerary(itinerary, setItinerary)
-  const getCurrentPosition = useCurrentPosition()
+  const [coords, getCurrentPosition] = useCurrentPosition()
+
+  useEffect(() => setCoordsChanges(coordsChanges + 1), [coords])
   return (
     <CardDetails
-      card={card}
+      card={{ ...card, ...coords }}
+      coordsChanges={coordsChanges}
       itinerary={itineraryCard}
       save={save}
       remove={remove}

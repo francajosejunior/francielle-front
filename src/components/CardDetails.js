@@ -4,7 +4,14 @@ import { Formik } from 'formik'
 import CardDetailsContainer from '../containers/CardDetailsContainer'
 import { TextField, Grid, Button } from '@material-ui/core'
 
-const CardDetails = ({ card, itinerary, save, remove, getCurrentPosition }) => {
+const CardDetails = ({
+  card,
+  itinerary,
+  save,
+  remove,
+  getCurrentPosition,
+  coordsChanges
+}) => {
   return (
     <Formik
       enableReinitialize
@@ -77,7 +84,9 @@ const CardDetails = ({ card, itinerary, save, remove, getCurrentPosition }) => {
               disabled
               label="Coordenadas"
               name="coordinates"
-              value={''}
+              value={
+                card.latitude ? `${card.latitude} , ${card.longitude}` : '-'
+              }
             />
           </Grid>
           <Grid item xs={12}>
@@ -85,12 +94,12 @@ const CardDetails = ({ card, itinerary, save, remove, getCurrentPosition }) => {
               fullWidth
               variant="contained"
               color="secondary"
-              onClick={getCurrentPosition(values)}
+              onClick={getCurrentPosition}
             >
               Atualizar coordenadas aqui
             </Button>
           </Grid>
-          {dirty && (
+          {(dirty || coordsChanges > 0) && (
             <Grid item xs={12}>
               <Button
                 fullWidth
