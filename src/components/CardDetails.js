@@ -81,6 +81,26 @@ const CardDetails = ({
           <Grid item xs={12}>
             <TextField
               fullWidth
+              label="Latitude"
+              name="latitude"
+              value={values.latitude || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              label="Longitude"
+              name="longitude"
+              value={values.longitude || ''}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
               disabled
               label="Coordenadas"
               name="coordinates"

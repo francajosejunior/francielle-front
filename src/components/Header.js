@@ -6,12 +6,13 @@ import Typography from '@material-ui/core/Typography'
 
 const container = document.getElementById('portal-header')
 
-const Header = ({ title }) => {
+const Header = ({ title, components }) => {
   return ReactDOM.createPortal(
     <>
       <AppBar>
         <Toolbar>
           <Typography variant="h6">{title || 'App'}</Typography>
+          {components}
         </Toolbar>
       </AppBar>
       <div

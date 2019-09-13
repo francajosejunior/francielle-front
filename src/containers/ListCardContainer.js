@@ -9,6 +9,7 @@ import ListCard from '../components/ListCard'
 import api from '../services/api'
 import { ItineraryContext, CardListContext } from '../util/context'
 import useRemoveCardFromItinerary from '../hooks/useRemoveCardFromItinerary'
+import useGoToCardDetail from '../hooks/useGoToCardDetail'
 
 const ListCardContainer = () => {
   const [itinerary, setItinerary] = useContext(ItineraryContext)
@@ -39,11 +40,13 @@ const ListCardContainer = () => {
     [list, itinerary]
   )
 
+  const goToCardDetail = useGoToCardDetail()
   return (
     <ListCard
       list={memoList}
       addCardToItinerary={addCardToItinerary}
       removeCardFromItinerary={removeCardFromItinerary}
+      goToCardDetail={goToCardDetail}
     />
   )
 }

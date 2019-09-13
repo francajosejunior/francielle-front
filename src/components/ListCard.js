@@ -6,7 +6,8 @@ import CardItem from './CardItem'
 const ListCard = ({
   list = [],
   addCardToItinerary,
-  removeCardFromItinerary
+  removeCardFromItinerary,
+  goToCardDetail
 }) => {
   return (
     <>
@@ -17,6 +18,13 @@ const ListCard = ({
             card={card}
             actions={
               <CardActions>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={goToCardDetail(card._id)}
+                >
+                  Abrir
+                </Button>
                 {card.added && (
                   <ButtonRemoveCardFromItinerary
                     onClick={removeCardFromItinerary(card)}

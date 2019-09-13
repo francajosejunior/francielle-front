@@ -1,0 +1,16 @@
+.searchable-header {
+  .search {
+    position: relative;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.15);
+    margin-left: 0;
+    width: 100%;
+  }
+  .searchIcon {
+    height: 100%;
+    position: absolute;
+    display: "flex";
+    align-items: "center";
+    justify-content: "center";
+  }
+}
