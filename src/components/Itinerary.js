@@ -14,15 +14,15 @@ const Itinerary = ({
     <>
       {cards?.map(card => (
         <CardItem
-          key={card._id}
+          key={card?._id}
           card={card}
-          distance={distanceList[card._id]}
+          distance={distanceList[(card?._id)]}
           actions={
             <CardActions>
               <Button
                 size="small"
                 color="primary"
-                onClick={goToCardDetail(card._id)}
+                onClick={goToCardDetail(card?._id)}
               >
                 Abrir
               </Button>

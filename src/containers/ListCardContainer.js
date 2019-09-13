@@ -41,7 +41,7 @@ const ListCardContainer = () => {
       list.filter(filterCardBySearch(searchText)).map(card => {
         return {
           ...card,
-          added: itinerary.cards?.some(x => x === card._id)
+          added: itinerary.cards?.some(x => x === card?._id)
         }
       }),
     [list, itinerary, searchText]

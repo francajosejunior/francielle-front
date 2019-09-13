@@ -17,7 +17,7 @@ export default callback => {
     result => {
       setList(
         list.map(x => {
-          if (x._id === result._id) {
+          if (x?._id === result._id) {
             return result
           }
           return x

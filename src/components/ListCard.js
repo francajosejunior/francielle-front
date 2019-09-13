@@ -15,23 +15,23 @@ const ListCard = ({
       {list.map(card => {
         return (
           <CardItem
-            key={card._id}
+            key={card?._id}
             card={card}
             actions={
               <CardActions>
                 <Button
                   size="small"
                   color="primary"
-                  onClick={goToCardDetail(card._id)}
+                  onClick={goToCardDetail(card?._id)}
                 >
                   Abrir
                 </Button>
-                {card.added && (
+                {card?.added && (
                   <ButtonRemoveCardFromItinerary
                     onClick={removeCardFromItinerary(card)}
                   />
                 )}
-                {!card.added && (
+                {!card?.added && (
                   <Button
                     size="small"
                     color="primary"
