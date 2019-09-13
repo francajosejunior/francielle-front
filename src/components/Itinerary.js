@@ -7,7 +7,8 @@ const Itinerary = ({
   cards,
   distanceList,
   removeCardFromItinerary,
-  goToCardDetail
+  goToCardDetail,
+  navigate
 }) => {
   return (
     <>
@@ -28,6 +29,9 @@ const Itinerary = ({
               <ButtonRemoveCardFromItinerary
                 onClick={removeCardFromItinerary(card)}
               />
+              <Button size="small" color="primary" onClick={navigate(card)}>
+                Navegar
+              </Button>
             </CardActions>
           }
         />

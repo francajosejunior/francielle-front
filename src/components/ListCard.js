@@ -7,7 +7,8 @@ const ListCard = ({
   list = [],
   addCardToItinerary,
   removeCardFromItinerary,
-  goToCardDetail
+  goToCardDetail,
+  navigate
 }) => {
   return (
     <>
@@ -39,6 +40,9 @@ const ListCard = ({
                     Visitar hoje
                   </Button>
                 )}
+                <Button size="small" color="primary" onClick={navigate(card)}>
+                  Navegar
+                </Button>
               </CardActions>
             }
           />

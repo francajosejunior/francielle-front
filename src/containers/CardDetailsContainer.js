@@ -6,6 +6,7 @@ import useSaveCard from '../hooks/useSaveCard'
 import useRemoveCardFromItinerary from '../hooks/useRemoveCardFromItinerary'
 import useCurrentPosition from '../hooks/useCurrentPosition'
 import history from '../util/history'
+import useNavigateTo from '../hooks/useNavigateTo'
 
 const onSaveCallback = () => history.push('/itinerary')
 
@@ -22,7 +23,7 @@ const CardDetailsContainer = ({ cardId }) => {
   const save = useSaveCard(onSaveCallback)
   const remove = useRemoveCardFromItinerary(itinerary, setItinerary)
   const [coords, getCurrentPosition] = useCurrentPosition()
-
+  const navigate = useNavigateTo()
   useEffect(() => setCoordsChanges(coordsChanges + 1), [coords])
   return (
     <CardDetails
@@ -32,6 +33,7 @@ const CardDetailsContainer = ({ cardId }) => {
       save={save}
       remove={remove}
       getCurrentPosition={getCurrentPosition}
+      navigate={navigate}
     />
   )
 }

@@ -3,22 +3,14 @@ import { CalendarToday } from '@material-ui/icons'
 import React from 'react'
 import Header from '../components/Header'
 import ListCardContainer from '../containers/ListCardContainer'
+import SearchableHeaderContainer from '../containers/SearchableHeaderContainer'
 
 const ListCard = ({ history }) => {
   return (
     <>
       <Header title="Cartões" />
+      <SearchableHeaderContainer />
       <ListCardContainer />
-      {/* <div className="fixed-botton-right">
-        <Fab
-          variant="extended"
-          color="primary"
-          onClick={() => history.push('/itinerary')}
-        >
-          <CalendarToday />
-          Itinerário
-        </Fab>
-      </div> */}
     </>
   )
 }

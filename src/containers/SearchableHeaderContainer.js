@@ -3,33 +3,54 @@ import React, {
   useContext,
   useEffect,
   useCallback,
-  useMemo
+  useMemo,
+  useRef
 } from 'react'
 import ReactDOM from 'react-dom'
 import Header from '../components/Header'
-import { Search, Add } from '@material-ui/icons'
-import { Fab, TextField, InputBase } from '@material-ui/core'
+import { Search, Add, Close } from '@material-ui/icons'
+import { Fab, TextField, InputBase, Button, Grid } from '@material-ui/core'
 import { SearchTextContext } from '../util/context'
+import './../scss/searchable-header.scss'
 
 const SearchableHeaderContainer = ({ title }) => {
   const [searchText, setSearchText] = useContext(SearchTextContext)
+  const [toggleSearch, setToggleSearch] = useState(false)
+
+  useEffect(() => {
+    if (!toggleSearch) {
+      setSearchText('')
+    }
+  }, [toggleSearch])
+
+  if (toggleSearch) {
+    return (
+      <div className="searchable-text">
+        <Grid container>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
+              autoFocus
+              value={searchText}
+              onChange={e => setSearchText(e.target.value)}
+            />
+          </Grid>
+        </Grid>
+        <div className="searchable-text-close">
+          <Button>
+            <Close onClick={() => setToggleSearch(!toggleSearch)} />
+          </Button>
+        </div>
+      </div>
+    )
+  }
 
   return (
-    <Header
-      className="searchable-header"
-      title={title}
-      components={
-        <div className="search">
-          <div className="searchIcon">
-            <Search />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-          />
-        </div>
-      }
-    />
+    <div className="searchable-header">
+      <Button>
+        <Search onClick={() => setToggleSearch(!toggleSearch)} />
+      </Button>
+    </div>
   )
 }
 

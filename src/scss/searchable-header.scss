@@ -1,16 +1,39 @@
 .searchable-header {
-  .search {
-    position: relative;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.15);
-    margin-left: 0;
-    width: 100%;
+  position: fixed;
+  top: 10px;
+  right: 0px;
+  z-index: 2000;
+  button {
+    color: #fff;
   }
-  .searchIcon {
-    height: 100%;
-    position: absolute;
-    display: "flex";
-    align-items: "center";
-    justify-content: "center";
+}
+.searchable-text {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2000;
+  width: 100%;
+  background-color: #fff;
+  height: 60px;
+  .MuiInputBase-root {
+    &::after {
+      display: none;
+    }
+    &::before {
+      display: none;
+    }
+  }
+  input {
+    margin-top: 22px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .searchable-text-close {
+    button {
+      position: fixed;
+      top: 10px;
+      right: 0px;
+      z-index: 2001;
+    }
   }
 }

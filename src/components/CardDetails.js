@@ -10,7 +10,8 @@ const CardDetails = ({
   save,
   remove,
   getCurrentPosition,
-  coordsChanges
+  coordsChanges,
+  navigate
 }) => {
   return (
     <Formik
@@ -131,7 +132,7 @@ const CardDetails = ({
               </Button>
             </Grid>
           )}
-          {itinerary && (
+          {itinerary && card._id && (
             <Grid item xs={12}>
               <Button
                 fullWidth
@@ -143,6 +144,16 @@ const CardDetails = ({
               </Button>
             </Grid>
           )}
+          <Grid item xs={12}>
+            <Button
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={navigate(values)}
+            >
+              Navegar
+            </Button>
+          </Grid>
         </Grid>
       )}
     />

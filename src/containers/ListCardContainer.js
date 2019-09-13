@@ -7,11 +7,18 @@ import React, {
 } from 'react'
 import ListCard from '../components/ListCard'
 import api from '../services/api'
-import { ItineraryContext, CardListContext } from '../util/context'
+import {
+  ItineraryContext,
+  CardListContext,
+  SearchTextContext
+} from '../util/context'
 import useRemoveCardFromItinerary from '../hooks/useRemoveCardFromItinerary'
 import useGoToCardDetail from '../hooks/useGoToCardDetail'
+import { filterCardBySearch } from '../services/filterService'
+import useNavigateTo from '../hooks/useNavigateTo'
 
 const ListCardContainer = () => {
+  const [searchText] = useContext(SearchTextContext)
   const [itinerary, setItinerary] = useContext(ItineraryContext)
   const [list] = useContext(CardListContext)
 
@@ -31,22 +38,25 @@ const ListCardContainer = () => {
 
   const memoList = useMemo(
     () =>
-      list.map(card => {
+      list.filter(filterCardBySearch(searchText)).map(card => {
         return {
           ...card,
           added: itinerary.cards?.some(x => x === card._id)
         }
       }),
-    [list, itinerary]
+    [list, itinerary, searchText]
   )
 
   const goToCardDetail = useGoToCardDetail()
+  const navigate = useNavigateTo()
+
   return (
     <ListCard
       list={memoList}
       addCardToItinerary={addCardToItinerary}
       removeCardFromItinerary={removeCardFromItinerary}
       goToCardDetail={goToCardDetail}
+      navigate={navigate}
     />
   )
 }
