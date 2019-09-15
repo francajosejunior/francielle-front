@@ -12,7 +12,7 @@ import history from '../util/history'
 
 const Menu = ({ open, toogleOpen, list }) => {
   return (
-    <div className="fixed-botton-left menu">
+    <div className="fixed-botton-right menu">
       <div className={`menu-items ${open && 'open'}`}>
         {list.map(({ route, onClick, icon: Icon }) => (
           <Fab key={route} color="primary" onClick={onClick}>

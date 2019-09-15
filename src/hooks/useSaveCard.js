@@ -8,6 +8,8 @@ import React, {
 import api from '../services/api'
 import { errorNotification } from '../services/notificationService'
 import { CardListContext, ItineraryContext } from '../util/context'
+import { addOrUpdate } from '../util/array'
+import { mapCardToApi } from '../services/cardService'
 
 export default callback => {
   const [list, setList] = useContext(CardListContext)
@@ -15,14 +17,7 @@ export default callback => {
 
   const updateCardList = useCallback(
     result => {
-      setList(
-        list.map(x => {
-          if (x?._id === result._id) {
-            return result
-          }
-          return x
-        })
-      )
+      setList(addOrUpdate(list, x => x?._id === result._id, result))
     },
     [setList, list]
   )
@@ -32,7 +27,7 @@ export default callback => {
       // async save
       const asyncSave = async () => {
         try {
-          const result = await api.post('card', card)
+          const result = await api.post('card', mapCardToApi(card))
           updateCardList(result)
           callback()
         } catch (error) {
