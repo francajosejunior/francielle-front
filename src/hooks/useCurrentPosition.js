@@ -11,11 +11,14 @@ import { getCurrentPosition } from '../services/geolocationService'
 import { EMPTY_OBJECT } from '../util/constants'
 
 export default () => {
-  const [coords, setCoords] = useState(EMPTY_OBJECT)
-  const getCoords = useCallback(() => {
-    getCurrentPosition()
-      .then(coords => setCoords(coords))
-      .catch(error => errorNotification(error.toString()))
-  }, [])
-  return [coords, getCoords]
+  const [cardWithCoords, setCoords] = useState(EMPTY_OBJECT)
+  const getCoords = useCallback(
+    card => () => {
+      getCurrentPosition()
+        .then(coords => setCoords({ ...card, ...coords }))
+        .catch(error => errorNotification(error.toString()))
+    },
+    []
+  )
+  return [cardWithCoords, getCoords]
 }

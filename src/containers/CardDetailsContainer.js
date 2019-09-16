@@ -20,7 +20,7 @@ const CardDetailsContainer = ({ cardId }) => {
     [itinerary, card]
   )
 
-  const save = usueSaveCard(onSaveCallback)
+  const save = useSaveCard(onSaveCallback)
   const remove = useRemoveCardFromItinerary(itinerary, setItinerary)
   const [coords, getCurrentPosition] = useCurrentPosition()
   const navigate = useNavigateTo()

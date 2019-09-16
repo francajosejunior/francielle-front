@@ -115,7 +115,7 @@ const CardDetails = ({
               fullWidth
               variant="contained"
               color="secondary"
-              onClick={getCurrentPosition}
+              onClick={getCurrentPosition(values)}
             >
               Atualizar coordenadas aqui
             </Button>
