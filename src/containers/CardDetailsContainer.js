@@ -7,6 +7,7 @@ import useRemoveCardFromItinerary from '../hooks/useRemoveCardFromItinerary'
 import useCurrentPosition from '../hooks/useCurrentPosition'
 import history from '../util/history'
 import useNavigateTo from '../hooks/useNavigateTo'
+import useTabOnEnter from '../hooks/useTabOnEnter'
 
 const onSaveCallback = () => history.push('/card')
 
@@ -25,16 +26,21 @@ const CardDetailsContainer = ({ cardId }) => {
   const [coords, getCurrentPosition] = useCurrentPosition()
   const navigate = useNavigateTo()
   useEffect(() => setCoordsChanges(coordsChanges + 1), [coords])
+
+  const containerRef = useTabOnEnter()
+
   return (
-    <CardDetails
-      card={{ ...card, ...coords }}
-      coordsChanges={coordsChanges}
-      itinerary={itineraryCard}
-      save={save}
-      remove={remove}
-      getCurrentPosition={getCurrentPosition}
-      navigate={navigate}
-    />
+    <div ref={containerRef}>
+      <CardDetails
+        card={{ ...card, ...coords }}
+        coordsChanges={coordsChanges}
+        itinerary={itineraryCard}
+        save={save}
+        remove={remove}
+        getCurrentPosition={getCurrentPosition}
+        navigate={navigate}
+      />
+    </div>
   )
 }
 

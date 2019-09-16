@@ -8,7 +8,7 @@ export const addOrUpdate = (list, expression, item) => {
     return x
   })
   if (newItem) {
-    returnList.push(newItem)
+    returnList.push(item)
   }
   return returnList
 }
