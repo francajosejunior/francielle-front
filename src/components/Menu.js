@@ -15,7 +15,12 @@ const Menu = ({ open, toogleOpen, list }) => {
     <div className="fixed-botton-right menu">
       <div className={`menu-items ${open && 'open'}`}>
         {list.map(({ route, onClick, icon: Icon }) => (
-          <Fab key={route} color="primary" onClick={onClick}>
+          <Fab
+            key={route}
+            color="primary"
+            className="menu-item"
+            onClick={onClick}
+          >
             <Icon />
           </Fab>
         ))}

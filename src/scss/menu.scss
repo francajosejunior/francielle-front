@@ -1,8 +1,10 @@
+%fixed {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
 %transition {
   transition: all ease-in-out 0.3s;
-}
-%transition2 {
-  transition: transform ease-in-out 0.3s;
 }
 
 .menu {
@@ -14,22 +16,18 @@
       @extend %transition;
       margin-top: 10px;
       margin-bottom: 10px;
-      margin-left: 0px;
     }
-    .menu-item-fixed {
-      margin-left: 2000px;
+    .menu-item {
+      transform: translate(200px, 0px);
     }
-
     .secondary {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
+      @extend %fixed;
       transform: scale(0) rotate(360deg);
     }
 
     &.open {
-      button {
-        margin-left: 0px;
+      .menu-item {
+        transform: translate(0px, 0px);
       }
       .primary {
         transform: scale(0) rotate(360deg);
